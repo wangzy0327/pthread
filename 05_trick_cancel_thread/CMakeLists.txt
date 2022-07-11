@@ -1,0 +1,3 @@
+add_executable(05_trick_cancel_thread thread.c)
+target_link_libraries(05_trick_cancel_thread PRIVATE pthread)
+

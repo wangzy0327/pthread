@@ -1,0 +1,3 @@
+add_executable(10_read_write_lock_thread thread.c)
+target_link_libraries(10_read_write_lock_thread PRIVATE pthread)
+
