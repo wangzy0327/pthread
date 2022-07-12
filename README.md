@@ -151,8 +151,8 @@ C++ 11 标准中新引入了与多线程编程相关的多个头文件，包括 
 ```
 
 * 线程的创建与使用
-  [示例1]()
-  [示例2]()
+  [示例1](13_cpp_create_thread/thread.cpp)
+  [示例2](14_cpp_use_thread/thread.cpp)
 
 thread类常用的成员函数
 
@@ -179,7 +179,12 @@ thread类常用的成员函数
    | sleep_for()   | 阻塞当前线程指定的时间（例如阻塞5秒） |
 
 * 实现线程同步
-  [示例]()
+
+  1）互斥锁
+  [示例
+  ](15_cpp_mutex_thread/thread.cpp)
+  2）条件变量
+  [示例](16_cpp_condition_thread/thread.cpp)
 
   条件变量常用函数
 
@@ -191,7 +196,7 @@ thread类常用的成员函数
   | notify_one() | 向其中一个正在等待的线程发送“条件成立”的信号                                                                                                                                                            |
   | notify_all() | 向所有等待的线程发送“条件成立”的信号                                                                                                                                                                    |
 
-**[示例代码]()**
+**[示例代码](16_cpp_condition_thread/thread.cpp)**
 
 ### 将Linux多线程程序移植到Windows
 

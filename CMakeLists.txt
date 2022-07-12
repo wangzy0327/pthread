@@ -19,4 +19,8 @@ add_subdirectory(09_condition_thread)
 add_subdirectory(10_read_write_lock_thread)
 add_subdirectory(11_deadlock_thread)
 add_subdirectory(12_self_property_thread)
+add_subdirectory(13_cpp_create_thread)
+add_subdirectory(14_cpp_use_thread)
+add_subdirectory(15_cpp_mutex_thread)
+add_subdirectory(16_cpp_condition_thread)
 
