@@ -108,11 +108,40 @@ Linux 环境中，实现线程同步的常用方法有 4 种，分别称为互�
 
 ### 避免线程发生死锁
 
-**[示例代码]()**
+**[示例代码](11_deadlock_thread/thread.c)**
+
+避免死锁的建议：
+
+1）使用互斥锁、信号量、条件变量和读写锁实现线程同步时，需要注意：
+
+占用互斥锁的线程，执行完成前必须及时解锁；
+
+通过sem_wait()函数占用信号量资源的线程，执行完成前必须调用sem_post()函数及时释放；
+
+当线程因pthread_cond_wait()函数被阻塞时，一定要保证有其他线程唤醒此线程；
+
+无论线程占用的是读锁还是写锁，都必须及时解锁
+
+2）POSIX标准中，很多阻塞线程执行的函数都提供有tryxxx()和timexxx()两个版本，例如 pthread_mutex_lock() 和 pthread_mutex_trylock()、sem_wait() 和 sem_trywait()、pthread_cond_wait() 和 pthread_cond_timedwait() 等，它们可以完成同样的功能，但 tryxxx() 版本的函数不会阻塞线程，timexxx() 版本的函数不会一直阻塞线程。
+
+3）多线程程序中，多个线程请求资源的顺序最好保持一致。例如：线程 t1 先请求 mutex 锁然后再请求 mutex2 锁，而 t2 则是先请求 mutex2 锁然后再请求 mutex 锁，这就是典型的因“请求资源顺序不一致”导致发生了线程死锁的情况。
 
 ### 线程属性（自定义线程属性）
 
-**[示例代码]()**
+```cpp
+#include <pthread.h>
+void * threadFun(void* args){
+    //......
+}
+pthread_t myThread;
+pthread_create(&myThread, NULL, ThreadFun, NULL);
+//线程属性变量
+pthread_attr_t myAttr;
+```
+
+程序中，pthread_create()函数需要传递4个参数，其中第二个参数NULL表示以系统默认的属性创建线程
+
+**[示例代码](12_self_property_thread/thread.c)**
 
 ### 使用C++11进行多线程编程
 

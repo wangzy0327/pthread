@@ -17,4 +17,6 @@ add_subdirectory(07_mutex_thread)
 add_subdirectory(08_semaphore_thread)
 add_subdirectory(09_condition_thread)
 add_subdirectory(10_read_write_lock_thread)
+add_subdirectory(11_deadlock_thread)
+add_subdirectory(12_self_property_thread)
 

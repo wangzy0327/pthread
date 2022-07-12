@@ -1,0 +1,3 @@
+add_executable(12_self_property_thread thread.c)
+target_link_libraries(12_self_property_thread PRIVATE pthread)
+
