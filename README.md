@@ -200,4 +200,9 @@ thread类常用的成员函数
 
 ### 将Linux多线程程序移植到Windows
 
-**[示例代码]()**
+```
+几乎所有的类 Unix 系统都支持 POSIX 标准，我们可以在这些系统中使用 Pthreads 库（全称 POSIX Threads）编写多线程程序。如今的 POSIX 标准，影响力已不仅限于类 Unix 系统，越来越多的操作系统都开始朝着支持该标准的方向发展，其中就包括我们常用的 Windows 系统。
+
+```
+
+**[pthreads-win32使用](17_windows_thread/README.md)**
