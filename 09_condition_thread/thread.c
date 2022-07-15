@@ -25,10 +25,10 @@ void * waitForTrue(void *args) {
         printf("waitForTrue 加锁失败\n");
         return NULL;
     } 
-    printf("%lu ------等待 x 的值为 10\n",pthread_self());
+    printf("%lu waitForTrue --- 等待 x 的值为 10\n",pthread_self());
     //在cond_wait的时候会释放mutex锁，等待状态改变
     if (pthread_cond_wait(&myCond, &myMutex) == 0) {
-        printf("x = %d\n", x);
+        printf("%lu waitForTrue  x = %d\n",pthread_self(), x);
     }
     //最终将互斥锁解锁
     pthread_mutex_unlock(&myMutex);
@@ -83,4 +83,23 @@ int main() {
     //销毁条件变量
     pthread_cond_destroy(&myCond);
     return 0;
+
+    /**
+     * @brief result
+     * 
+     * 140171421927168 waitForTrue ---等待 x 的值为 10
+        140171413534464 doneForTrue：x = 1
+        140171413534464 doneForTrue：x = 2
+        140171413534464 doneForTrue：x = 3
+        140171413534464 doneForTrue：x = 4
+        140171413534464 doneForTrue：x = 5
+        140171413534464 doneForTrue：x = 6
+        140171413534464 doneForTrue：x = 7
+        140171413534464 doneForTrue：x = 8
+        140171413534464 doneForTrue：x = 9
+        140171413534464 doneForTrue：x = 10
+        140171421927168 waitForTrue  x = 10
+     * 
+     * 
+     */
 }
